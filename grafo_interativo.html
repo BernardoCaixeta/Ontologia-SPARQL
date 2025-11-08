@@ -1,0 +1,252 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="http://www.w3.org/2000/01/rdf-schema#label">http://www.w3.org/2000/01/rdf-schema#label</option>
+                                
+                                    <option value="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property">http://www.w3.org/1999/02/22-rdf-syntax-ns#Property</option>
+                                
+                                    <option value="http://www.w3.org/2000/01/rdf-schema#range">http://www.w3.org/2000/01/rdf-schema#range</option>
+                                
+                                    <option value="http://example.org/autorDe">http://example.org/autorDe</option>
+                                
+                                    <option value="http://example.org/ArtigoIA">http://example.org/ArtigoIA</option>
+                                
+                                    <option value="Giovanna">Giovanna</option>
+                                
+                                    <option value="http://example.org/Carla">http://example.org/Carla</option>
+                                
+                                    <option value="http://example.org/Giovanna">http://example.org/Giovanna</option>
+                                
+                                    <option value="http://example.org/ArtigoBI">http://example.org/ArtigoBI</option>
+                                
+                                    <option value="Carla">Carla</option>
+                                
+                                    <option value="http://www.w3.org/2002/07/owl#ObjectProperty">http://www.w3.org/2002/07/owl#ObjectProperty</option>
+                                
+                                    <option value="http://example.org/Pesquisador">http://example.org/Pesquisador</option>
+                                
+                                    <option value="Claudio">Claudio</option>
+                                
+                                    <option value="Artigo de BI">Artigo de BI</option>
+                                
+                                    <option value="http://example.org/ITLAB">http://example.org/ITLAB</option>
+                                
+                                    <option value="http://www.w3.org/2000/01/rdf-schema#subPropertyOf">http://www.w3.org/2000/01/rdf-schema#subPropertyOf</option>
+                                
+                                    <option value="Artigo de IA">Artigo de IA</option>
+                                
+                                    <option value="http://example.org/Instituicao">http://example.org/Instituicao</option>
+                                
+                                    <option value="http://www.w3.org/2000/01/rdf-schema#domain">http://www.w3.org/2000/01/rdf-schema#domain</option>
+                                
+                                    <option value="http://www.w3.org/1999/02/22-rdf-syntax-ns#type">http://www.w3.org/1999/02/22-rdf-syntax-ns#type</option>
+                                
+                                    <option value="http://example.org/afiliadoA">http://example.org/afiliadoA</option>
+                                
+                                    <option value="http://example.org/Pessoa">http://example.org/Pessoa</option>
+                                
+                                    <option value="http://example.org/Claudio">http://example.org/Claudio</option>
+                                
+                                    <option value="http://example.org/Bernardo">http://example.org/Bernardo</option>
+                                
+                                    <option value="ITLAB">ITLAB</option>
+                                
+                                    <option value="UFRJ">UFRJ</option>
+                                
+                                    <option value="Bernardo">Bernardo</option>
+                                
+                                    <option value="http://www.w3.org/2002/07/owl#Class">http://www.w3.org/2002/07/owl#Class</option>
+                                
+                                    <option value="http://example.org/UFRJ">http://example.org/UFRJ</option>
+                                
+                                    <option value="http://www.w3.org/2000/01/rdf-schema#Resource">http://www.w3.org/2000/01/rdf-schema#Resource</option>
+                                
+                                    <option value="http://example.org/Artigo">http://example.org/Artigo</option>
+                                
+                                    <option value="http://www.w3.org/2000/01/rdf-schema#subClassOf">http://www.w3.org/2000/01/rdf-schema#subClassOf</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "http://www.w3.org/2000/01/rdf-schema#label", "label": "label", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property", "label": "Property", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/2000/01/rdf-schema#range", "label": "range", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/autorDe", "label": "autorDe", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/ArtigoIA", "label": "Artigo de IA", "shape": "dot"}, {"color": "#97c2fc", "id": "Giovanna", "label": "Giovanna", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/Carla", "label": "Carla", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/Giovanna", "label": "Giovanna", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/ArtigoBI", "label": "Artigo de BI", "shape": "dot"}, {"color": "#97c2fc", "id": "Carla", "label": "Carla", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/2002/07/owl#ObjectProperty", "label": "ObjectProperty", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/Pesquisador", "label": "Pesquisador", "shape": "dot"}, {"color": "#97c2fc", "id": "Claudio", "label": "Claudio", "shape": "dot"}, {"color": "#97c2fc", "id": "Artigo de BI", "label": "Artigo de BI", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/ITLAB", "label": "ITLAB", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "label": "subPropertyOf", "shape": "dot"}, {"color": "#97c2fc", "id": "Artigo de IA", "label": "Artigo de IA", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/Instituicao", "label": "Instituicao", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/2000/01/rdf-schema#domain", "label": "domain", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "label": "type", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/afiliadoA", "label": "afiliadoA", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/Pessoa", "label": "Pessoa", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/Claudio", "label": "Claudio", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/Bernardo", "label": "Bernardo", "shape": "dot"}, {"color": "#97c2fc", "id": "ITLAB", "label": "ITLAB", "shape": "dot"}, {"color": "#97c2fc", "id": "UFRJ", "label": "UFRJ", "shape": "dot"}, {"color": "#97c2fc", "id": "Bernardo", "label": "Bernardo", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/2002/07/owl#Class", "label": "Class", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/UFRJ", "label": "UFRJ", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/2000/01/rdf-schema#Resource", "label": "Resource", "shape": "dot"}, {"color": "#97c2fc", "id": "http://example.org/Artigo", "label": "Artigo", "shape": "dot"}, {"color": "#97c2fc", "id": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "label": "subClassOf", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "http://example.org/Carla", "label": "afiliadoA", "to": "http://example.org/ITLAB"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#label", "label": "a", "to": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"}, {"arrows": "to", "from": "Artigo de IA", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/Carla", "label": "a", "to": "http://example.org/Pessoa"}, {"arrows": "to", "from": "http://example.org/Bernardo", "label": "a", "to": "http://example.org/Pesquisador"}, {"arrows": "to", "from": "http://example.org/Pesquisador", "label": "subClassOf", "to": "http://example.org/Pessoa"}, {"arrows": "to", "from": "http://example.org/Giovanna", "label": "autorDe", "to": "http://example.org/ArtigoIA"}, {"arrows": "to", "from": "http://example.org/Carla", "label": "autorDe", "to": "http://example.org/ArtigoIA"}, {"arrows": "to", "from": "http://example.org/Pesquisador", "label": "a", "to": "http://www.w3.org/2002/07/owl#Class"}, {"arrows": "to", "from": "http://example.org/Claudio", "label": "afiliadoA", "to": "http://example.org/ITLAB"}, {"arrows": "to", "from": "http://example.org/autorDe", "label": "range", "to": "http://example.org/Artigo"}, {"arrows": "to", "from": "http://example.org/Giovanna", "label": "a", "to": "http://example.org/Pessoa"}, {"arrows": "to", "from": "UFRJ", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/afiliadoA", "label": "subPropertyOf", "to": "http://example.org/afiliadoA"}, {"arrows": "to", "from": "http://example.org/Bernardo", "label": "a", "to": "http://example.org/Pessoa"}, {"arrows": "to", "from": "http://example.org/Artigo", "label": "a", "to": "http://www.w3.org/2002/07/owl#Class"}, {"arrows": "to", "from": "http://example.org/Artigo", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/afiliadoA", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://www.w3.org/2002/07/owl#ObjectProperty", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/ArtigoIA", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#domain", "label": "a", "to": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"}, {"arrows": "to", "from": "http://example.org/autorDe", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/Instituicao", "label": "a", "to": "http://www.w3.org/2002/07/owl#Class"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#label", "label": "subPropertyOf", "to": "http://www.w3.org/2000/01/rdf-schema#label"}, {"arrows": "to", "from": "http://example.org/Instituicao", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "label": "a", "to": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "label": "a", "to": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"}, {"arrows": "to", "from": "http://example.org/afiliadoA", "label": "a", "to": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"}, {"arrows": "to", "from": "Artigo de BI", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/afiliadoA", "label": "a", "to": "http://www.w3.org/2002/07/owl#ObjectProperty"}, {"arrows": "to", "from": "http://example.org/autorDe", "label": "domain", "to": "http://example.org/Pessoa"}, {"arrows": "to", "from": "http://example.org/autorDe", "label": "a", "to": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"}, {"arrows": "to", "from": "http://example.org/ITLAB", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/Pessoa", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/Claudio", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf", "label": "subPropertyOf", "to": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf"}, {"arrows": "to", "from": "http://example.org/autorDe", "label": "a", "to": "http://www.w3.org/2002/07/owl#ObjectProperty"}, {"arrows": "to", "from": "http://example.org/Claudio", "label": "autorDe", "to": "http://example.org/ArtigoBI"}, {"arrows": "to", "from": "Giovanna", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/ArtigoBI", "label": "a", "to": "http://example.org/Artigo"}, {"arrows": "to", "from": "http://example.org/Pesquisador", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "Claudio", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#range", "label": "subPropertyOf", "to": "http://www.w3.org/2000/01/rdf-schema#range"}, {"arrows": "to", "from": "http://example.org/Bernardo", "label": "autorDe", "to": "http://example.org/ArtigoIA"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#subClassOf", "label": "subPropertyOf", "to": "http://www.w3.org/2000/01/rdf-schema#subClassOf"}, {"arrows": "to", "from": "http://example.org/Claudio", "label": "a", "to": "http://example.org/Pessoa"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#domain", "label": "subPropertyOf", "to": "http://www.w3.org/2000/01/rdf-schema#domain"}, {"arrows": "to", "from": "http://example.org/UFRJ", "label": "a", "to": "http://example.org/Instituicao"}, {"arrows": "to", "from": "Carla", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/afiliadoA", "label": "range", "to": "http://example.org/Instituicao"}, {"arrows": "to", "from": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "label": "subPropertyOf", "to": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"}, {"arrows": "to", "from": "http://example.org/UFRJ", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/afiliadoA", "label": "domain", "to": "http://example.org/Pessoa"}, {"arrows": "to", "from": "http://example.org/Carla", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/ITLAB", "label": "a", "to": "http://example.org/Instituicao"}, {"arrows": "to", "from": "http://example.org/Carla", "label": "a", "to": "http://example.org/Pesquisador"}, {"arrows": "to", "from": "ITLAB", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/autorDe", "label": "subPropertyOf", "to": "http://example.org/autorDe"}, {"arrows": "to", "from": "http://www.w3.org/2002/07/owl#Class", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://www.w3.org/2000/01/rdf-schema#range", "label": "a", "to": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"}, {"arrows": "to", "from": "http://example.org/Bernardo", "label": "afiliadoA", "to": "http://example.org/UFRJ"}, {"arrows": "to", "from": "Bernardo", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/ArtigoIA", "label": "a", "to": "http://example.org/Artigo"}, {"arrows": "to", "from": "http://example.org/Giovanna", "label": "afiliadoA", "to": "http://example.org/UFRJ"}, {"arrows": "to", "from": "http://example.org/ArtigoBI", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/Giovanna", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}, {"arrows": "to", "from": "http://example.org/Pessoa", "label": "a", "to": "http://www.w3.org/2002/07/owl#Class"}, {"arrows": "to", "from": "http://example.org/Giovanna", "label": "autorDe", "to": "http://example.org/ArtigoBI"}, {"arrows": "to", "from": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", "label": "a", "to": "http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"}, {"arrows": "to", "from": "http://example.org/Bernardo", "label": "a", "to": "http://www.w3.org/2000/01/rdf-schema#Resource"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,113 @@
+@prefix ex: <http://example.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:Bernardo a ex:Pesquisador,
+        ex:Pessoa,
+        rdfs:Resource ;
+    rdfs:label "Bernardo" ;
+    ex:afiliadoA ex:UFRJ ;
+    ex:autorDe ex:ArtigoIA .
+
+ex:Carla a ex:Pesquisador,
+        ex:Pessoa,
+        rdfs:Resource ;
+    rdfs:label "Carla" ;
+    ex:afiliadoA ex:ITLAB ;
+    ex:autorDe ex:ArtigoIA .
+
+ex:Claudio a ex:Pessoa,
+        rdfs:Resource ;
+    rdfs:label "Claudio" ;
+    ex:afiliadoA ex:ITLAB ;
+    ex:autorDe ex:ArtigoBI .
+
+ex:Giovanna a ex:Pessoa,
+        rdfs:Resource ;
+    rdfs:label "Giovanna" ;
+    ex:afiliadoA ex:UFRJ ;
+    ex:autorDe ex:ArtigoBI,
+        ex:ArtigoIA .
+
+ex:afiliadoA a rdf:Property,
+        rdfs:Resource,
+        owl:ObjectProperty ;
+    rdfs:domain ex:Pessoa ;
+    rdfs:range ex:Instituicao ;
+    rdfs:subPropertyOf ex:afiliadoA .
+
+ex:autorDe a rdf:Property,
+        rdfs:Resource,
+        owl:ObjectProperty ;
+    rdfs:domain ex:Pessoa ;
+    rdfs:range ex:Artigo ;
+    rdfs:subPropertyOf ex:autorDe .
+
+rdf:type a rdf:Property ;
+    rdfs:subPropertyOf rdf:type .
+
+rdfs:domain a rdf:Property ;
+    rdfs:subPropertyOf rdfs:domain .
+
+rdfs:label a rdf:Property ;
+    rdfs:subPropertyOf rdfs:label .
+
+rdfs:range a rdf:Property ;
+    rdfs:subPropertyOf rdfs:range .
+
+rdfs:subClassOf a rdf:Property ;
+    rdfs:subPropertyOf rdfs:subClassOf .
+
+rdfs:subPropertyOf a rdf:Property ;
+    rdfs:subPropertyOf rdfs:subPropertyOf .
+
+"Artigo de BI" a rdfs:Resource .
+
+"Artigo de IA" a rdfs:Resource .
+
+"Bernardo" a rdfs:Resource .
+
+"Carla" a rdfs:Resource .
+
+"Claudio" a rdfs:Resource .
+
+"Giovanna" a rdfs:Resource .
+
+"ITLAB" a rdfs:Resource .
+
+"UFRJ" a rdfs:Resource .
+
+ex:ArtigoBI a ex:Artigo,
+        rdfs:Resource ;
+    rdfs:label "Artigo de BI" .
+
+ex:ITLAB a ex:Instituicao,
+        rdfs:Resource ;
+    rdfs:label "ITLAB" .
+
+ex:Pesquisador a rdfs:Resource,
+        owl:Class ;
+    rdfs:subClassOf ex:Pessoa .
+
+ex:UFRJ a ex:Instituicao,
+        rdfs:Resource ;
+    rdfs:label "UFRJ" .
+
+owl:ObjectProperty a rdfs:Resource .
+
+ex:Artigo a rdfs:Resource,
+        owl:Class .
+
+ex:ArtigoIA a ex:Artigo,
+        rdfs:Resource ;
+    rdfs:label "Artigo de IA" .
+
+ex:Instituicao a rdfs:Resource,
+        owl:Class .
+
+owl:Class a rdfs:Resource .
+
+ex:Pessoa a rdfs:Resource,
+        owl:Class .
+
