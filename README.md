@@ -29,3 +29,7 @@ Exemplo de construção de uma ontologia simples, como popular um grafo RDF, ser
 ### Representação do Grafo RDF
 
 ![alt text](grafo_rdf.png)
+
+### Exemplo de Consulta na Plataforma Wikidata
+
+![alt text](mapa_cidades_populacao.png)
