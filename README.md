@@ -1,10 +1,24 @@
-# Ontologia + SPARQL
+# 2.1. Construção de Grafo RDF em Python
+Exemplo de construção de uma ontologia a partir do banco de dados relacional disponível [neste link](https://www.w3.org/TR/r2rml/#example-input-database), incluindo:
+- Como popular um grafo RDF
+- Realizar serialização em Python usando `rdflib`
+- Visualizar o grafo (NetworkX/Matplotlib, PyVis).
+
+# 2.2. Exemplo de Consulta SPARQL usando a API do Wikidata
+Exemplo de consulta SPARQL utilizando a API pública da plataforma Wikidata disponível [neste link](https://query.wikidata.org/), incluindo:
+- Conversão para DataFrame (pandas)
+- Visualização dos dados
+
+## Visualização do mapa
+![alt text](<2.2 - mapa_cidades_populacao.png>)
+
+# 2.3. Ontologia + SPARQL
 Exemplo de construção de uma ontologia simples, como popular um grafo RDF, serializar em Turtle e rodar consultas SPARQL em Python usando [`rdflib`]. Inclui opções de visualização (NetworkX/Matplotlib, PyVis) e inferência (owlrl).
 
 > Conceitos-modelo: `Pessoa`, `Pesquisador` (subclasse de Pessoa), `Artigo`, `Instituicao`<br>
 > Propriedades: `autorDe` (Pessoa→Artigo), `afiliadoA` (Pessoa→Instituicao)
 
-### Modelo de Ontologia
+## Modelo de Ontologia
 
 **Classes**
 
@@ -26,10 +40,6 @@ Exemplo de construção de uma ontologia simples, como popular um grafo RDF, ser
 
 - Instituições: `ex:UFRJ`, `ex:ITLAB`
 
-### Representação do Grafo RDF
+## Representação do Grafo RDF
 
-![alt text](grafo_rdf.png)
-
-### Exemplo de Consulta na Plataforma Wikidata
-
-![alt text](mapa_cidades_populacao.png)
+![alt text](<2.3 - grafo_estatico.png>)
